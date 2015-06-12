@@ -63,6 +63,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
         pointsList = PointsList.getInstance(this);
 
         manager.beginTransaction()
+                .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                 .replace(R.id.fragment_container, new FragmentHome())
                 .addToBackStack("home")
                 .commit();
@@ -125,6 +126,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
 
         f.setArguments(bundle);
         manager.beginTransaction()
+                .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                 .replace(R.id.fragment_container, f, "Excursions")
                 .addToBackStack("Excursions")
                 .commit();
@@ -141,6 +143,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
         manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         manager.beginTransaction()
+                .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                 .replace(R.id.fragment_container, point)
                 .addToBackStack("follow_to_point")
                 .commit();
@@ -159,6 +162,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
         point.setArguments(bundle);
 
         manager.beginTransaction()
+                .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                 .replace(R.id.fragment_container, point)
                 .addToBackStack("follow_to_point")
                 .commit();
@@ -175,6 +179,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
             briefing.setArguments(bundle);
 
             manager.beginTransaction()
+                    .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                     .replace(R.id.fragment_container, briefing)
                     .addToBackStack("info")
                     .commit();

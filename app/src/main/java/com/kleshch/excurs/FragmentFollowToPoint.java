@@ -20,9 +20,6 @@ import java.util.concurrent.ExecutionException;
 
 public class FragmentFollowToPoint extends Fragment {
 
-   //final String image = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Nicholi_Chapel_in_Novosibirsk.jpg/200px-Nicholi_Chapel_in_Novosibirsk.jpg";
-    final String text = "Какой-то текст об этой часовне. Тут наверно должно быть че то интересное, да?";
-
     private int idNum;
 
     @Nullable
@@ -54,6 +51,7 @@ public class FragmentFollowToPoint extends Fragment {
                 //show map fragment, coordinates to go
                 FragmentMap fragmentMap = FragmentMap.newInstance(latLng, image, shortInfo);
                 getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                         .replace(R.id.fragment_container, fragmentMap)
                         .addToBackStack("point_map")
                         .commit();
@@ -70,6 +68,7 @@ public class FragmentFollowToPoint extends Fragment {
                 info.setArguments(bundle);
 
                 getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                         .replace(R.id.fragment_container, info)
                         .addToBackStack("point_info")
                         .commit();

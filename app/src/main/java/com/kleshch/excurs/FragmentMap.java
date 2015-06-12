@@ -14,9 +14,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-/**
- * Created by Зайка on 05.05.2015.
- */
 public class FragmentMap extends MapFragment {
 
     private LatLng latLng;
@@ -61,6 +58,5 @@ public class FragmentMap extends MapFragment {
                 return true;
             }
         });
-                //.icon(BitmapDescriptorFactory.fromResource(android.R.drawable.));
     }
 }

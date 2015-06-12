@@ -18,7 +18,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class FragmentExcursionsList extends Fragment {
-    String[] strExcursions;
     int number;
 
     @Override

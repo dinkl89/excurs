@@ -65,6 +65,7 @@ public class FragmentPointInfo extends Fragment {
                 question.setArguments(bundle);
 
                 getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                         .replace(R.id.fragment_container, question)
                         .addToBackStack("question")
                         .commit();
