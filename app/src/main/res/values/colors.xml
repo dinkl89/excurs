@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_background">#ff4eb84a</color>
+    <color name="material_drawer_primary_text">#A9A9A9</color>
+    <color name="material_drawer_selected">#8aff8a</color>
+    <color name="material_drawer_selected_text">#ff3c783a</color>
+    <color name="material_drawer_primary_icon">#ff4eb84a</color>
+    <color name="white">#fff</color>
+    <color name="dark_green">#ff005000</color>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="В каком году началось строительство часовни?"
+        android:id="@+id/tvQuestion"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp" />
+    
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/edAnswer"
+        android:hint="@string/answer_hint"
+        android:layout_height="wrap_content"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question_check"
+        android:layout_below="@+id/edAnswer"
+        android:layout_marginTop="30dp"
+        style="@android:style/Widget.Holo.Button.Borderless"
+        android:text="@string/check_answer"
+        android:textColor="@color/dark_green"/>
+
+</RelativeLayout>

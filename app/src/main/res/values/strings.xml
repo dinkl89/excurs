@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Excurs</string>
+    <string name="google_api_key">AIzaSyCefIAgj2dlhisXd0gc5YwDpXiG-MKO89k</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="toolbar_title">Новосибирск</string>
+
+    <string name="drawer_registration">Регистрация</string>
+    <string name="drawer_excursions">Экскурсии</string>
+    <string name="drawer_news">Новости</string>
+    <string name="drawer_current_events">Текущие события</string>
+    <string name="drawer_settings">Настройки</string>
+    <string name="drawer_exit">Выход</string>
+
+    <string-array name="dialog_items">
+        <item>Информация</item>
+        <item>Начать</item>
+    </string-array>
+
+    <string name="go_to_question">Перейти к вопросу ➔</string>
+    <string name="begin">Начать экскурсию ➔</string>
+    <string name="follow_to">Следуйте по адресу:</string>
+    <string name="show_on_map">Показать на карте</string>
+    <string name="check_place">Я на месте!</string>
+    <string name="check_answer">Ответить</string>
+    
+    <string name="url_address">http://73rooks.com/api/</string>
+    <string name="action_get_list">get_excursions_list.php?lang=</string>
+    <string name="action_get_excurs_info">get_excursion_info.php?id=</string>
+    <string name="action_get_points_list">get_points_list.php?id=</string>
+    <string name="action_get_info_point">get_point_info.php?id=</string>
+    <string name="images">images/</string>
+    <string name="answer_hint">Введите ответ...</string>
+    <string name="right_answer">Правильно!</string>
+    <string name="answer_check">Результат</string>
+    <string name="ok">OK</string>
+    <string name="excursion_end">Вы прошли эту экскурсию</string>
+    <string name="wrong">Неверный ответ!</string>
+</resources>
