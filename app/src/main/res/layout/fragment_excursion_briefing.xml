@@ -22,40 +22,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:textColor="@android:color/black"
-                android:id="@+id/brief_description" />
+            android:orientation="vertical"
+            android:gravity="center">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:scaleType="fitCenter"
-                android:background="@android:color/holo_blue_light"/>
+                android:layout_width="200dp"
+                android:layout_height="190dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/briefing_img"
+                android:src="@drawable/teart_night"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.bluejamesbond.text.DocumentView xmlns:ext="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:textColor="@android:color/black"
-                android:id="@+id/brief_description2" />
+                ext:documentView_textAlignment="justified"
+                ext:documentView_hyphen="-"
+                ext:documentView_textColor="@android:color/black"
+                ext:documentView_insetPaddingTop="20dp"
+                ext:documentView_insetPaddingLeft="5dp"
+                ext:documentView_insetPaddingRight="5dp"
+                android:id="@+id/brief_description"/>
+
         </LinearLayout>
     </ScrollView>
 

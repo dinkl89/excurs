@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Excurs</string>
-    <string name="google_api_key">AIzaSyCefIAgj2dlhisXd0gc5YwDpXiG-MKO89k</string>
+    <string name="google_api_key">AIzaSyAJFuRAt-Y1yLixoITNTnFAdPuIwgwtAr8</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -25,7 +25,8 @@
     <string name="show_on_map">Показать на карте</string>
     <string name="check_place">Я на месте!</string>
     <string name="check_answer">Ответить</string>
-    
+
+    <string name="url_domain_name">http://73rooks.com/</string>
     <string name="url_address">http://73rooks.com/api/</string>
     <string name="action_get_list">get_excursions_list.php?lang=</string>
     <string name="action_get_excurs_info">get_excursion_info.php?id=</string>
@@ -38,4 +39,5 @@
     <string name="ok">OK</string>
     <string name="excursion_end">Вы прошли эту экскурсию</string>
     <string name="wrong">Неверный ответ!</string>
+    <string name="dot">●</string>
 </resources>

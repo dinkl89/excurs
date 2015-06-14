@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity implements IFace {
 
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .resetViewBeforeLoading(true)
+                .showImageForEmptyUri(android.R.drawable.ic_menu_close_clear_cancel)
                 .cacheOnDisk(true)
                 .cacheInMemory(true)
                 .build();

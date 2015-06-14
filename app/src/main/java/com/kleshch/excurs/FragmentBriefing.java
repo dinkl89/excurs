@@ -3,14 +3,19 @@ package com.kleshch.excurs;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.bluejamesbond.text.DocumentView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,8 +34,9 @@ public class FragmentBriefing extends Fragment {
         View view = inflater.inflate(R.layout.fragment_excursion_briefing, container, false);
 
         TextView tvTitle = (TextView) view.findViewById(R.id.brief_title);
-        TextView tvDescription = (TextView) view.findViewById(R.id.brief_description);
-        TextView tvDescription2 = (TextView) view.findViewById(R.id.brief_description2);
+        //TextView tvDescription = (TextView) view.findViewById(R.id.brief_description);
+        DocumentView tvDescription = (DocumentView) view.findViewById(R.id.brief_description);
+        ImageView imageView = (ImageView) view.findViewById(R.id.briefing_img);
 
         if (getArguments() != null) {
             this.idNum = getArguments().getInt("id");
@@ -40,9 +46,12 @@ public class FragmentBriefing extends Fragment {
 
         responseParse();
 
-        tvTitle.setText("• " + name);
-        tvDescription.setText(description);
-        tvDescription2.setText(description);
+        tvTitle.setText(getResources().getString(R.string.dot) + name);
+
+        Spannable spannable = new SpannableString(description);
+        tvDescription.setText(spannable);
+
+        MainActivity.loader.displayImage(image, imageView);
 
         Button button = (Button) view.findViewById(R.id.briefing_button);
 
@@ -78,6 +87,10 @@ public class FragmentBriefing extends Fragment {
             name = object.getString("name");
             description = object.getString("description");
             image = object.getString("image");
+            if (!image.contains("http://")) {
+                image = getResources().getString(R.string.url_domain_name) +
+                        getResources().getString(R.string.images) + image;
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

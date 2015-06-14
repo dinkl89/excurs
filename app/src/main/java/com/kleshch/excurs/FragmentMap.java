@@ -49,12 +49,12 @@ public class FragmentMap extends MapFragment {
         getMap().setMyLocationEnabled(true);
         getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
         getMap().addMarker(options);
-        getMap().setInfoWindowAdapter(new CustomInfoWindowAdapter(getActivity().getApplicationContext(),image, text));
+        //getMap().setInfoWindowAdapter(new CustomInfoWindowAdapter(getActivity().getApplicationContext(),image, text));
 
         getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                marker.showInfoWindow();
+                //marker.showInfoWindow();
                 return true;
             }
         });

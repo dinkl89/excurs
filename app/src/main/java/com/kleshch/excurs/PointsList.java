@@ -103,11 +103,15 @@ public class PointsList {
                 String pointName = object.getString("name");
                 String pointInfo = object.getString("info");
                 String pointImage = object.getString("image");
+                if (!pointImage.contains("http://")) {
+                    pointImage = activity.getResources().getString(R.string.url_domain_name) +
+                            activity.getResources().getString(R.string.images) + pointImage;
+                }
                 int pointId = tryParse(object.getString("id"));
 
                 String pointAddress = object.getString("address");
-                Double lat = 55.042775;//Double.parseDouble(object.getString("lat"));
-                Double lng = 82.912654;//Double.parseDouble(object.getString("lng"));
+                Double lat = tryDouble(object.getString("lat"));
+                Double lng = tryDouble(object.getString("lng"));
                 LatLng latLng = new LatLng(lat, lng);
                 String story = object.getString("story");
                 String question = object.getString("question");
@@ -126,6 +130,15 @@ public class PointsList {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    private double tryDouble(String input){
+        try{
+            return Double.parseDouble(input);
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         return 0;

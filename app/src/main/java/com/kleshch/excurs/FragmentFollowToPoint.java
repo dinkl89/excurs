@@ -21,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class FragmentFollowToPoint extends Fragment {
 
     private int idNum;
+    private String image;
 
     @Nullable
     @Override
@@ -41,7 +42,11 @@ public class FragmentFollowToPoint extends Fragment {
         String address = point.getAddress();
         final String shortInfo = point.getShortInfo();
         final LatLng latLng = point.getCoordinates();
-        final String image = point.getImage();
+        image = point.getImage();
+        if (!image.contains("http://")) {
+            image = getResources().getString(R.string.url_domain_name) +
+                    getResources().getString(R.string.images) + image;
+        }
 
         tvAddress.setText(address);
 
