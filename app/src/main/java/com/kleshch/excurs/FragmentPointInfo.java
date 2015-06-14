@@ -53,10 +53,10 @@ public class FragmentPointInfo extends Fragment {
 
         LinearLayout infoContainer = (LinearLayout) view.findViewById(R.id.infoDescriptionContainer);
 
-        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
+        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 300, getResources().getDisplayMetrics());
 
-        LinearLayout.LayoutParams lpImage = new LinearLayout.LayoutParams(height, height);
-        lpImage.setMargins(0, 10, 0, 0);
+        LinearLayout.LayoutParams lpImage = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height);
+        lpImage.setMargins(5, 10, 5, 0);
 
         LinearLayout.LayoutParams lpText = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lpText.setMargins(5, 10, 5, 0);
