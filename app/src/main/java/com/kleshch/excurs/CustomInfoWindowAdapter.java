@@ -1,8 +1,6 @@
 package com.kleshch.excurs;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;

@@ -1,7 +1,5 @@
 package com.kleshch.excurs;
 
-import java.util.ArrayList;
-
 public class ExcursionListItem {
 
     private String name, image;

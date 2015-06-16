@@ -1,7 +1,6 @@
 package com.kleshch.excurs;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -34,14 +33,6 @@ public class PointsList {
         this.activity = activity;
     }
 
-    public ArrayList<Point> getPointsList(int id){
-        if (list != null){
-            return list;
-        } else {
-            return null;
-        }
-    }
-
     public int getListLength(){
         return list.size();
     }
@@ -60,21 +51,6 @@ public class PointsList {
 
         try {
             stringToParse = request.get();
-            Log.d("111", stringToParse);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void getPointRequest(int idNum) {
-        GetRequest request = new GetRequest();
-        request.execute(activity.getResources().getString(R.string.url_address) + activity.getResources().getString(R.string.action_get_info_point) + String.valueOf(idNum));
-
-        try {
-            stringToParse = request.get();
-            Log.d("111", stringToParse);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -107,8 +83,6 @@ public class PointsList {
                     pointImage = activity.getResources().getString(R.string.url_domain_name) +
                             activity.getResources().getString(R.string.images) + pointImage;
                 }
-                int pointId = tryParse(object.getString("id"));
-
                 String pointAddress = object.getString("address");
                 Double lat = tryDouble(object.getString("lat"));
                 Double lng = tryDouble(object.getString("lng"));
@@ -117,22 +91,13 @@ public class PointsList {
                 String question = object.getString("question");
                 String answer = object.getString("answer");
 
-                Point point = new Point(pointId, pointName, pointInfo, pointAddress, pointImage, latLng, story, question, answer);
+                Point point = new Point(pointName, pointInfo, pointAddress, pointImage, latLng, story, question, answer);
                 list.add(point);
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    private int tryParse(String input){
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e){
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     private double tryDouble(String input){

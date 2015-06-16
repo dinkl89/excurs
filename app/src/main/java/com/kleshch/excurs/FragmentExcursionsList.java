@@ -1,39 +1,18 @@
 package com.kleshch.excurs;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class FragmentExcursionsList extends Fragment {
-    int number;
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        if(v.getId() == R.id.excursions_list){
-            menu.add(getResources().getStringArray(R.array.dialog_items)[0]);
-            menu.add(getResources().getStringArray(R.array.dialog_items)[1]);
-        }
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        IFace activity = (IFace) getActivity();
-        activity.onUserSelectValue(number, item.getTitle().toString());
-        return true;
-    }
+    private int number;
 
     @Nullable
     @Override
@@ -49,13 +28,13 @@ public class FragmentExcursionsList extends Fragment {
 
         listView.setAdapter(adapter);
 
-        registerForContextMenu(listView);
+        final IFace activity = (IFace) getActivity();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 number = list.get(position).getItemId();
-                getActivity().openContextMenu(listView);
+                activity.onUserSelectValue(number);
             }
         });
 

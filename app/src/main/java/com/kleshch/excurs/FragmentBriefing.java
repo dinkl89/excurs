@@ -5,14 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bluejamesbond.text.DocumentView;
@@ -34,7 +31,6 @@ public class FragmentBriefing extends Fragment {
         View view = inflater.inflate(R.layout.fragment_excursion_briefing, container, false);
 
         TextView tvTitle = (TextView) view.findViewById(R.id.brief_title);
-        //TextView tvDescription = (TextView) view.findViewById(R.id.brief_description);
         DocumentView tvDescription = (DocumentView) view.findViewById(R.id.brief_description);
         ImageView imageView = (ImageView) view.findViewById(R.id.briefing_img);
 
@@ -46,7 +42,7 @@ public class FragmentBriefing extends Fragment {
 
         responseParse();
 
-        tvTitle.setText(getResources().getString(R.string.dot) + name);
+        tvTitle.setText(name);
 
         Spannable spannable = new SpannableString(description);
         tvDescription.setText(spannable);
@@ -68,11 +64,11 @@ public class FragmentBriefing extends Fragment {
 
     private void getResponse() {
         GetRequest request = new GetRequest();
-        request.execute(getActivity().getResources().getString(R.string.url_address) + getActivity().getResources().getString(R.string.action_get_excurs_info) + String.valueOf(idNum));
+        request.execute(getActivity().getResources().getString(R.string.url_address) +
+                getActivity().getResources().getString(R.string.action_get_excurs_info) + String.valueOf(idNum));
 
         try {
             stringToParse = request.get();
-            Log.d("111", stringToParse);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -80,7 +76,7 @@ public class FragmentBriefing extends Fragment {
         }
     }
 
-    private void responseParse(){
+    private void responseParse() {
         try {
             JSONArray array = new JSONArray(stringToParse);
             JSONObject object = array.getJSONObject(0);

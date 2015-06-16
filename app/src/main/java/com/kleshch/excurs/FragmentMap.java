@@ -9,7 +9,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -49,12 +48,10 @@ public class FragmentMap extends MapFragment {
         getMap().setMyLocationEnabled(true);
         getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
         getMap().addMarker(options);
-        //getMap().setInfoWindowAdapter(new CustomInfoWindowAdapter(getActivity().getApplicationContext(),image, text));
 
         getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                //marker.showInfoWindow();
                 return true;
             }
         });

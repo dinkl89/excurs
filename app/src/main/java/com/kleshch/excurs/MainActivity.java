@@ -1,16 +1,13 @@
 package com.kleshch.excurs;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -24,15 +21,13 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import java.io.File;
+import java.util.Locale;
 
 
 public class MainActivity extends ActionBarActivity implements IFace {
 
-    FragmentManager manager= getFragmentManager();
-    final String[] tempExcursionsList = {"Часовня во имя Святителя и Чудотворца Николая", "Экскурсия2", "Экскурсия3", "Экскурсия4", "Экскурсия5",
-            "Экскурсия1", "Экскурсия2", "Экскурсия3", "Экскурсия4", "Экскурсия5",
-            "Экскурсия1", "Экскурсия2", "Экскурсия3", "Экскурсия4", "Экскурсия5"};
-    Drawer.Result drawerResult;
+    private FragmentManager manager= getFragmentManager();
+    private Drawer.Result drawerResult;
     public static ImageLoader loader = ImageLoader.getInstance();
     private PointsList pointsList;
 
@@ -99,7 +94,6 @@ public class MainActivity extends ActionBarActivity implements IFace {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
                         switch (iDrawerItem.getIdentifier()) {
                             case 1:
-                                //get excursions list from back-end
                                 getExcursionsList();
                                 break;
                             case 2:
@@ -120,12 +114,14 @@ public class MainActivity extends ActionBarActivity implements IFace {
     }
 
     @Override
+    public boolean isEng() {
+        return Locale.getDefault().getDisplayLanguage().equals("English");
+    }
+
+    @Override
     public void getExcursionsList() {
         FragmentExcursionsList f = new FragmentExcursionsList();
-        Bundle bundle = new Bundle();
-        bundle.putStringArray("excursions", tempExcursionsList);
 
-        f.setArguments(bundle);
         manager.beginTransaction()
                 .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
                 .replace(R.id.fragment_container, f, "Excursions")
@@ -169,29 +165,19 @@ public class MainActivity extends ActionBarActivity implements IFace {
                 .commit();
     }
 
-    public void onUserSelectValue(int num, String str){
-        Log.d("111", "You press excursion number " + num + ", action " + str);
+    public void onUserSelectValue(int num){
 
-        if(str.equals(getResources().getStringArray(R.array.dialog_items)[0])){
-            Bundle bundle = new Bundle();
-            bundle.putInt("id", num);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", num);
 
-            FragmentBriefing briefing = new FragmentBriefing();
-            briefing.setArguments(bundle);
+        FragmentBriefing briefing = new FragmentBriefing();
+        briefing.setArguments(bundle);
 
-            manager.beginTransaction()
-                    .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
-                    .replace(R.id.fragment_container, briefing)
-                    .addToBackStack("info")
-                    .commit();
-        } else {
-            beginExcursion(num);
-        }
-    }
-
-    public void beginExcursion() {
-        //Start quest fragment
-
+        manager.beginTransaction()
+                .setCustomAnimations(R.animator.slide_in, R.animator.slide_out, R.animator.pop_enter, R.animator.pop_exit)
+                .replace(R.id.fragment_container, briefing)
+                .addToBackStack("info")
+                .commit();
     }
 
     void onExit(){

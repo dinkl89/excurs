@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +39,6 @@ public class FragmentQuestion extends Fragment {
             Point point = pointsList.getPoint(pointId);
             question = point.getQuestion();
             strAnswer = point.getAnswer();
-            Log.d ("111", "Answer is: " + strAnswer);
         }
 
         TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
@@ -77,7 +74,6 @@ public class FragmentQuestion extends Fragment {
 
     private void checkAnswer(){
         String temp = edAnswer.getText().toString();
-        Log.d("111", "Answer is \"" + strAnswer + "\", you entered " + temp);
 
         if(convertString(temp).equals(convertString(strAnswer))){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

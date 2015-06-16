@@ -11,11 +11,10 @@ public class Point {
     private String answer;
     private String story;
     private String image;
-    private int pointId;
     private LatLng coordinates;
 
-    public Point(int pointId, String name, String shortInfo, String address, String image, LatLng latLng, String story, String question, String answer){
-        this.pointId = pointId;
+    public Point(String name, String shortInfo, String address, String image, LatLng latLng, String story, String question, String answer){
+
         this.name = name;
         this.shortInfo = shortInfo;
         this.address = address;
@@ -44,10 +43,6 @@ public class Point {
 
     public String getImage() {
         return image;
-    }
-
-    public int getPointId() {
-        return pointId;
     }
 
     public String getAddress() {

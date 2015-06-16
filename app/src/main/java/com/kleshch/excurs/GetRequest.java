@@ -1,7 +1,6 @@
 package com.kleshch.excurs;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,12 +22,9 @@ public class GetRequest extends AsyncTask<String, Void, String> {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(params[0]);
         HttpResponse httpResponse;
-        Log.d("222", "Starting execute");
 
         try{
-            Log.d("222", "inside try");
             httpResponse = httpClient.execute(httpGet);
-            Log.d("22222222", "status code = " + httpResponse.getStatusLine().getStatusCode());
             if(httpResponse.getStatusLine().getStatusCode() == 401){
                 HttpEntity httpEntity = httpResponse.getEntity();
                 result = EntityUtils.toString(httpEntity);
@@ -36,7 +32,6 @@ public class GetRequest extends AsyncTask<String, Void, String> {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 result = EntityUtils.toString(httpEntity);
             }
-            Log.d("info", result);
         } catch (ClientProtocolException e){
             e.printStackTrace();
         } catch (IOException e){
@@ -44,10 +39,5 @@ public class GetRequest extends AsyncTask<String, Void, String> {
         }
 
         return result;
-    }
-
-    protected void onPostExecute(String page){      //delete on release!
-        Log.d("PostExecute getreq", "Completed");
-        Log.d("222", "onPostExecute: " + page);
     }
 }

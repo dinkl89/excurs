@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Excurs</string>
+    <string name="google_api_key">AIzaSyAmvAR9xNMUQiZrcLArtfJuHuI2-OzRD7Q</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="toolbar_title">Novosibirsk</string>
+
+    <string name="drawer_registration">Registration</string>
+    <string name="drawer_excursions">Escursions</string>
+    <string name="drawer_news">News</string>
+    <string name="drawer_current_events">Current events</string>
+    <string name="drawer_settings">Settings</string>
+    <string name="drawer_exit">Exit</string>
+
+    <string-array name="dialog_items">
+        <item>Information</item>
+        <item>Begin</item>
+    </string-array>
+
+    <string name="go_to_question">Go to question ➔</string>
+    <string name="begin">Begin excursion ➔</string>
+    <string name="follow_to">Follow to:</string>
+    <string name="show_on_map">Show on map</string>
+    <string name="check_place">I\'m here!</string>
+    <string name="check_answer">Check answer</string>
+    <string name="answer_hint">Answer...</string>
+
+    <string name="url_address">http://73rooks.com/api/</string>
+    <string name="action_get_list">get_excursions_list.php?lang=</string>
+    <string name="action_get_excurs_info">get_excursion_info.php?id=</string>
+    <string name="action_get_points_list">get_points_list.php?id=</string>
+    <string name="action_get_info_point">get_point_info.php?id=</string>
+    <string name="images">images/</string>
+
+</resources>

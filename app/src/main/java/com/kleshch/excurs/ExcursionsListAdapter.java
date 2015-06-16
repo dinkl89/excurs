@@ -1,13 +1,10 @@
 package com.kleshch.excurs;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +15,6 @@ public class ExcursionsListAdapter extends BaseAdapter {
     ArrayList<ExcursionListItem> list;
 
     public ExcursionsListAdapter(ArrayList<ExcursionListItem> list, Context context) {
-        Log.d("111", "Adapter");
         this.list = list;
         this.context = context;
     }
@@ -51,8 +47,6 @@ public class ExcursionsListAdapter extends BaseAdapter {
 
         TextView textView = (TextView) view.findViewById(R.id.list_item_text);
         textView.setText(list.get(position).getName());
-
-        Log.d("111", "number" + position + ": " + list.get(position).getName());
 
         return view;
     }

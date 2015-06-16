@@ -3,11 +3,13 @@ package com.kleshch.excurs;
 
 public interface IFace {
 
-    public void beginExcursion(int id);
+    void beginExcursion(int id);
 
-    public void onUserSelectValue(int num, String str);
+    void onUserSelectValue(int num);
 
-    public void nextPoint(int id);
+    void nextPoint(int id);
 
-    public void getExcursionsList();
+    void getExcursionsList();
+
+    boolean isEng();
 }

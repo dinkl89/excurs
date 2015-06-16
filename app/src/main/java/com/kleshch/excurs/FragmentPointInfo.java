@@ -1,19 +1,14 @@
 package com.kleshch.excurs;
 
 import android.app.Fragment;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,9 +19,9 @@ import com.bluejamesbond.text.style.JustifiedSpan;
 import com.bluejamesbond.text.style.TextAlignment;
 
 public class FragmentPointInfo extends Fragment {
-    TextView title;
-    ImageView imageView;
-    int finalWidth, finalHeight, pointId;
+    private TextView title;
+    private ImageView imageView;
+    private int pointId;
 
     @Nullable
     @Override
@@ -63,7 +58,7 @@ public class FragmentPointInfo extends Fragment {
 
         if (info.contains("$")) {
             String split[] = info.split("\\$");
-            Log.d("111", "number of parts after split is " + split.length);
+
             Spannable spannable = new SpannableString(split[0]);
             documentView.setText(spannable);
 
