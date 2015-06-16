@@ -24,40 +24,65 @@ public class FragmentBriefing extends Fragment {
 
     private int idNum;
     private String stringToParse, name, description, image;
+    private View view;
+    private TextView tvTitle;
+    private DocumentView tvDescription;
+    private ImageView imageView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_excursion_briefing, container, false);
 
-        TextView tvTitle = (TextView) view.findViewById(R.id.brief_title);
-        DocumentView tvDescription = (DocumentView) view.findViewById(R.id.brief_description);
-        ImageView imageView = (ImageView) view.findViewById(R.id.briefing_img);
+        final IFace activity = (IFace) getActivity();
+        activity.showDialog();
 
-        if (getArguments() != null) {
-            this.idNum = getArguments().getInt("id");
-        }
+        view = inflater.inflate(R.layout.fragment_excursion_briefing, container, false);
 
-        getResponse();
-
-        responseParse();
-
-        tvTitle.setText(name);
-
-        Spannable spannable = new SpannableString(description);
-        tvDescription.setText(spannable);
-
-        MainActivity.loader.displayImage(image, imageView);
-
-        Button button = (Button) view.findViewById(R.id.briefing_button);
-
-        button.setOnClickListener(new View.OnClickListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onClick(View v) {
-                IFace activity = (IFace) getActivity();
-                activity.beginExcursion(idNum);
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                tvTitle = (TextView) view.findViewById(R.id.brief_title);
+                tvDescription = (DocumentView) view.findViewById(R.id.brief_description);
+                imageView = (ImageView) view.findViewById(R.id.briefing_img);
+
+                if (getArguments() != null) {
+                    idNum = getArguments().getInt("id");
+                }
+
+                getResponse();
+
+                responseParse();
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvTitle.setText(name);
+
+                        Spannable spannable = new SpannableString(description);
+                        tvDescription.setText(spannable);
+
+                        MainActivity.loader.displayImage(image, imageView);
+
+                        Button button = (Button) view.findViewById(R.id.briefing_button);
+
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                IFace activity = (IFace) getActivity();
+                                activity.beginExcursion(idNum);
+                            }
+                        });
+                        activity.hideDialog();
+                    }
+                });
             }
-        });
+        }).start();
 
         return view;
     }

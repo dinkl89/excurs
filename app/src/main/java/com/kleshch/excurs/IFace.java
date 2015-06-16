@@ -12,4 +12,8 @@ public interface IFace {
     void getExcursionsList();
 
     boolean isEng();
+
+    void showDialog();
+
+    void hideDialog();
 }

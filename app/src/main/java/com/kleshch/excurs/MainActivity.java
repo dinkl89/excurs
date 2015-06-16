@@ -2,6 +2,7 @@ package com.kleshch.excurs;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -30,6 +31,25 @@ public class MainActivity extends ActionBarActivity implements IFace {
     private Drawer.Result drawerResult;
     public static ImageLoader loader = ImageLoader.getInstance();
     private PointsList pointsList;
+    private ProgressDialog dialog;
+
+    @Override
+    public void showDialog() {
+        dialog = ProgressDialog.show(this, null, null, true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (dialog != null){
+            hideDialog();
+        }
+    }
+
+    @Override
+    public void hideDialog() {
+        dialog.dismiss();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

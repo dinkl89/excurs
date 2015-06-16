@@ -17,16 +17,11 @@ public class ModelExcursionList {
     private ArrayList<ExcursionListItem> list;
     private Context context;
     private IFace iFace;
-    private ProgressDialog dialog;
 
     public ModelExcursionList(final Activity activity){
 
         this.context = activity.getApplicationContext();
         this.iFace = (IFace)activity;
-
-        dialog = new ProgressDialog(activity);
-
-        dialog.show();
 
         getResponse();
     }
@@ -58,7 +53,6 @@ public class ModelExcursionList {
             e.printStackTrace();
         }
         buildList();
-        dialog.dismiss();
     }
 
     private int getListLength(){

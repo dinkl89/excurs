@@ -19,6 +19,8 @@ public class PointsList {
 
     private Activity activity;
 
+    private IFace iFace;
+
     private static PointsList ourInstance = null;
 
     public static PointsList getInstance(Activity activity) {
@@ -31,6 +33,7 @@ public class PointsList {
     private PointsList(Activity activity) {
         list = new ArrayList<>();
         this.activity = activity;
+        this.iFace = (IFace)activity;
     }
 
     public int getListLength(){
@@ -94,7 +97,6 @@ public class PointsList {
                 Point point = new Point(pointName, pointInfo, pointAddress, pointImage, latLng, story, question, answer);
                 list.add(point);
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

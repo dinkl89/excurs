@@ -13,30 +13,55 @@ import java.util.ArrayList;
 
 public class FragmentExcursionsList extends Fragment {
     private int number;
+    private ArrayList<ExcursionListItem> list;
+    private ListView listView;
+    private View view;
+    private ModelExcursionList excursionList;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_excursions, container, false);
-
-        ModelExcursionList excursionList = new ModelExcursionList(getActivity());
-
-        final ArrayList<ExcursionListItem> list = excursionList.getList();
-
-        final ListView listView = (ListView) view.findViewById(R.id.excursions_list);
-        ExcursionsListAdapter adapter = new ExcursionsListAdapter(list, getActivity());
-
-        listView.setAdapter(adapter);
 
         final IFace activity = (IFace) getActivity();
+        activity.showDialog();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        view = inflater.inflate(R.layout.fragment_excursions, container, false);
+
+        new Thread(new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                number = list.get(position).getItemId();
-                activity.onUserSelectValue(number);
+            public void run() {
+                try{
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                excursionList = new ModelExcursionList(getActivity());
+
+                list = excursionList.getList();
+
+                listView = (ListView) view.findViewById(R.id.excursions_list);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ExcursionsListAdapter adapter = new ExcursionsListAdapter(list, getActivity());
+
+                        listView.setAdapter(adapter);
+
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                number = list.get(position).getItemId();
+                                activity.onUserSelectValue(number);
+                            }
+                        });
+                        activity.hideDialog();
+                    }
+                });
             }
-        });
+        }).start();
+
 
         return view;
     }
