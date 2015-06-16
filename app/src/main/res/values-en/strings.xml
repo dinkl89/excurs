@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Excurs</string>
-    <string name="google_api_key">AIzaSyAmvAR9xNMUQiZrcLArtfJuHuI2-OzRD7Q</string>
+    <string name="google_api_key">AIzaSyAJFuRAt-Y1yLixoITNTnFAdPuIwgwtAr8</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -26,13 +26,19 @@
     <string name="show_on_map">Show on map</string>
     <string name="check_place">I\'m here!</string>
     <string name="check_answer">Check answer</string>
-    <string name="answer_hint">Answer...</string>
 
+    <string name="url_domain_name">http://73rooks.com/</string>
     <string name="url_address">http://73rooks.com/api/</string>
     <string name="action_get_list">get_excursions_list.php?lang=</string>
     <string name="action_get_excurs_info">get_excursion_info.php?id=</string>
     <string name="action_get_points_list">get_points_list.php?id=</string>
     <string name="action_get_info_point">get_point_info.php?id=</string>
     <string name="images">images/</string>
+    <string name="answer_hint">Answer...</string>
+    <string name="right_answer">Right!</string>
+    <string name="answer_check">Result</string>
+    <string name="ok">OK</string>
+    <string name="excursion_end">You have finished this excursion</string>
+    <string name="wrong">Wrong!</string>
 
 </resources>
